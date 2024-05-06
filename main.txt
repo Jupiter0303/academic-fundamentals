@@ -1,8 +1,7 @@
-\documentclass[12pt]{article}
-
-
+\documentclass[english]{lab2}
+%случайно обнаружили что не подключили cls файл в первом реквесте вроде бы все 
+%замечания поправили, в другом зип файле текст идентичен за исключением cls файла
 \usepackage[english]{babel}
-\usepackage[left = 3cm, right = 2cm, top = 2.5cm, bottom = 2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{float}
@@ -51,18 +50,18 @@ Definition 2 serves well also to express properties of verifiability of a securi
 \begin{equation}
     \forall\varepsilon,test_p(E, K)iff | = p.\label{1}
 \end{equation}
-where $\varepsilon$|= p means that p holds on $\varepsilon$.
+where $\varepsilon$ $|= p$ means that p holds on $\varepsilon$.
 
  P generates random, independent $a_1$, . . . , $a_k$ and $b_1$, . . . , $b_{k-1}$ and sets $b_k$ by equation(\ref{2})
 
  \begin{equation}
-     b_k = v_k^{-1}(\sum_{i=1}^{k-1}b_iv_i - d\sum_{i=1}a_iu_i. \label{2}
+     b_k = v_k^{-1}(\sum_{i=1}^{k-1}b_iv_i - d\sum_{i=1}^{k-1}a_iu_i. \label{2}
  \end{equation}
-where $u_i=logU_i$ and $V_i=logV_i$.
+where $u_i=$log$U_i$ and $v_i=$log$V_i$.
 
 An encryption algorithm EK is said to be Homomorphic for a message m if given EK(m 1) and EK(m2) one can obtain EK (m1 $\odot$ m2 ) without decrypting m1 and m2 individually, for some operation $\odot$ If each voter is only able to vote “no” or “yes”, then by multiplying the encrypted ballots one can receive a product which is equal to the encryption of the sum of the ballots. This describes equation (\ref{3}). 
 \begin{equation}
-    E(x)\otimes E(y) = E(x \oplus y) \Rightarrow \prod_{k=1}^nE(b_i)=E(\sum_{i=1}^nb_i).\label{3}
+    E x  \otimes E(y) = E(x \oplus y) \Rightarrow \prod_{k=1}^nE(b_i)=E\left(\sum_{i=1}^nb_i\right).\label{3}
 \end{equation}
 
 

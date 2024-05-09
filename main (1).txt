@@ -1,0 +1,143 @@
+%\documentclass[english]{lab2}
+\documentclass[runningheads]{llncs}
+
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+
+
+\begin{document}
+
+\begin{center}
+    ELECTRONIC VOTING SYSTEMS.
+\end{center}
+
+\tableofcontents
+
+
+\section{Definitions}
+\subsection{General definitions}  
+
+Definition 2. Given an exam ($ID$, $Q$, $A$, $M$ ), an exam’s execution, $E$, is a tuple of two sets.
+
+\begin{itemize}
+    \item[-] $ID' \subseteq ID$ are the registerer candidates,
+    \item[-] $Q' \subseteq Q$ are the official questions of the exam;
+\end{itemize}
+
+and of four relations over the exam: 
+\begin{itemize}
+    \item[-] Assigned Questions $\subseteq (ID \times Q)$, links a question to a candidate, supposedly the question the candidate receives by the authority;
+    \item[-] Submitted Tests $\subseteq (ID \times (Q \times A))$, links an answered test to a candidate, supposedly the test submitted for marking by the candidate;
+    \item[-] Marked Tests $\subseteq (ID \times (Q \times A) \times M)$ links a mark to a exam-tests of a candidate, supposedly the grade given to the test;
+    \item[-] Notified Marks $\subseteq (ID \times M)$ links a mark to a candidate, supposedly the mark notified to the candidate;
+\end{itemize}
+
+\subsection{Voting systems definitions}
+
+Three types of voting systems exist:
+\begin{enumerate}
+    \item[1)] System of paper voting The paper voting system is the most common system for voting. Before the electronic voting system is implemented, it will be used. The system of paper ballet includes paper and sealed ballet. Each voter uses and does not share one ballot. This system's disadvantages are ($I$) the time it takes ($II$) the speed is low.
+    
+    \item[2)] Electronic voting system Electronic voting systems are electronic voting devices. A voting machine that uses an electronic voting machine to allow voters to pass on their secret ballots. The inconvenience is I poor computer science individuals cannot vote correctly, ($II$) safety threats sensitive, ($III$) electricity consumption at polling stations; and ($IV$) costs.
+    
+    \item[3)] Online voting system A new platform for secure votes and voting is the online voting system. Online voting systems are a web-based voting system, which transmits votes via a web browser over the internet. Voters from all over the world are eligible to vote online.
+\end{enumerate}
+
+
+\section{Proofs}
+
+Definition 2 serves well also to express properties of verifiability of a security property $p$. An exam protocol is $p$-$verifiable$ if it has a test for $p$, that is, an algorithm $test_p$ that given any exam’s execution $\varepsilon$ and some knowledge $K$ (e.g., decryption keys) returns $true$ if and only if $p$ holds on $E$. Formally, $p$-$verifiability$ can be expressed as in Equation (\ref{1})
+
+\begin{equation}
+    \forall\varepsilon,test_p(E, K)_if = p\label{1}
+    \text{, where $\varepsilon \not\equiv p$ means that $p$ holds on $\varepsilon$}
+\end{equation}
+
+ $P$ generates random, independent $a_1$, . . . , $a_k$ and $b_1$, . . . , $b_{k-1}$ and sets $b_k$ by equation (\ref{2})
+
+ \begin{equation}
+     b_k = v_k^{-1}\biggl(\sum_{i=1}^{k-1}b_iv_i - d\sum_{i=1}^{k-1}a_iu_i\biggr). \label{2}
+ \end{equation}
+where $u_i=$ $\log U_i$ and $v_i=$ $\log V_i$.
+
+An encryption $algorithm$ $EK$ is said to be Homomorphic for a message $m$ if given $EK(m 1)$ and $EK(m2)$ one can obtain $EK (m1 \odot m2 )$ without decrypting $m1$ and $m2$ individually, for some operation $\odot$ If each voter is only able to vote “$no$” or “$yes$”, then by multiplying the encrypted ballots one can receive a product which is equal to the encryption of the sum of the ballots. This describes equation (\ref{3}). 
+\begin{equation}
+    E x  \otimes E(y) = E(x \oplus y) \Rightarrow \prod_{k=1}^nE(b_i)=E\biggl(\sum_{i=1}^nb_i\biggr).\label{3}
+\end{equation}
+
+
+Therefore, counting authorities cannot count intermediate results and furthermore voters do not have to involve more than one round. With dynamic ballots, any participant or authority including the counter cannot gain any knowledge about the tally before the counting stage. In fact this assures the fairness of the protocol. Voting stage consists of 2 $phases$: Ballot obtaining phase and vote casting phase. Overview of voting stage is shown in Figure \ref{im1};
+
+\subsection{Explaining how to use}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=45mm]{1.jpg}
+    \caption{Overview of the voting stage}
+    \label{im1}
+\end{figure}
+
+Counter simplifies the list by decrypting the encrypted candidate selections $(Ez(V', PVID2))$ with the corresponding private keys ($dz$) and produces the list $|PVID1, PVID2, V'|$ which is voters’ candidate selections. Counter checks the $PVID2$ by applying $PVID$ Authority’s public key. If the check fails, Counter discards the vote. Overview of counting stage is shown in Figure \ref{im2}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=45mm]{2.jpg}
+    \caption{Overview of counting stage}
+    \label{im2}
+\end{figure}
+
+Table \ref{tab1} summarizes the major benefits and drawbacks of voting schemes. 
+
+\begin{table}[h]
+    \begin{center}
+        \caption{benefits and drawbacks of e-voting schemes}
+        \label{tab1}
+          \begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+          \hline
+          Scheme&Benefits&Drawbacks\\
+          \hline
+          Blind\par Signature&1. Simple and efficient\par 2. Flexible vote formats &1. Blind factor can be used as receipt\\
+          \hline
+          Mixnet &1. Flexible vote formats\par 2.Shuffling of mix-servers make votes unlinkable&1. Huge operations for shuffling\\
+          \hline
+          Homomorhhic Encryption &1. Directly combines encrypted votes to get an encrypted tally\par 2. Publicly verifiable by any observer  &1. Limited vote format\par 2. Huge concern of $ZKP$\\ 
+          \hline
+          Paper & 1. Paper acts as Voter’s receip &1. Verification of ballot prior voting\par 2. Voting booth may know votes \\
+          \hline
+          Commercial &1. Developing hardware interfaces to establish voter’s exact voting experience &1. High procedural and operational errors may occur for specific software and hardware\\
+          \hline
+          \end{tabular}
+   \end{center}
+\end{table}
+
+In this section, we prove that the proposed protocol satisfies all general requirements of an electronic voting system mentioned earlier and show the functionality comparisons between our scheme and other related schemes in Table \ref{tab2}.
+
+\begin{table}[h]
+    \begin{center}
+        \caption{benefits and drawbacks of e-voting schemes}
+        \label{tab2}
+          \begin{tabular}{|p{3.7cm}|p{3.7cm}|p{3.7cm}|p{3.7cm}|}
+          \hline
+          & protocols& &\\
+          \hline
+          Requirement&Liaw’s protocol&Chang-Lee’s protocol &Our protocol\\
+          \hline
+         Accuracy & Yes&Yes&Yes\\
+          \hline
+          Simplicity&No&Yes&Yes\\
+          \hline
+          Privacy&Yes&Yes&Yes\\
+          \hline
+          Democracy&Yes&Yes&Yes\\
+          \hline
+          Verifiability&Yes&No&Yes\\
+          \hline
+          Uncoercibility&No& Yes& Yes\\
+          \hline
+          \end{tabular}
+   \end{center}
+\end{table}
+
+\end{document}

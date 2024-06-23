@@ -1,0 +1,169 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{beamer}
+\usetheme{Berlin}
+\date{20 июня 2024}
+\usepackage{tikz}
+\usepackage{colortbl}
+\usepackage[russian]{babel}
+
+% define new colors
+\definecolor{Blue}{RGB}{73,73,256}
+\definecolor{LightBlue}{RGB}{202,201,229}
+\definecolor{VeryLightBlue}{RGB}{230,230,242}
+
+%Information to be included in the title page:
+\title{Электронные машины для голосования по сравнению с традиционными методами}
+\author{выполнил: Дубровин И.}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Оглавление}
+\tableofcontents
+\end{frame}
+
+\section{Введение}
+
+\begin{frame}
+\frametitle{Введение}
+    \begin{column}[h]{0.6\linewidth}  
+        \begin{itemize}
+        \item Методы электронного голосования распространяются.
+        \item Кажется будто методы электронного голосования в скорем \alert{заменят} традиционные (в частности бумажные).
+        \item Однако для этого электронные системы должны соответсвовать определённым критериям \alert{удобства} и \alert{эффективности}.
+        \end{itemize}
+    \end{column}
+    \hfill
+    \begin{column}[h]{0.35\linewidth}
+        \centering
+        \includegraphics[width=30mm]{картинка 1.png}
+    \end{column}
+\end{frame}
+
+\section{Цели и задачи}
+
+\begin{frame}
+\frametitle{Наши цели и задачи}
+    \begin{column}[h]{0.6\linewidth}  
+        \begin{itemize}
+        \item Выяснить удобность методов электронного голосования относительно других. \newline
+        
+        \item Установить эффективность метода (защиту от ошибок).
+        \end{itemize}
+    \end{column}
+    \begin{column}[h]{0.4\linewidth}
+        \centering
+        \includegraphics[width=50mm]{картинка 2.png}
+    \end{column}
+\end{frame}
+
+\section{Материалы и методы}
+
+\begin{frame}
+\frametitle{Материалы и методы. Основа}
+    
+    \begin{minipage}[h]{0.8\linewidth}  
+        \begin{itemize}
+        \item \small Для объективной оценки необходимо проведение вымышленного голосования. Кандидаты Вымышлены. Избиратели случайны, их намерения известны и не двусмысленны.
+        
+        \item \small Методы голосования: бумажные бюллетени, перфокарты и механические рычажные машины.
+
+        \item \small Для оценки субъективного восприятия пользователями каждого метода голосования был использован опросник SUS (System Usability Scale).
+
+        \item \small Замерялось время проведённое избирателем на участке и его удовлетворённость.
+        \end{itemize}
+    \end{minipage}
+
+    \begin{tikzpicture}[remember picture, overlay]
+    
+    \node [left=0cm] at (current page.east)
+    {
+
+        \includegraphics[width=0.2\textwidth]{картинка 3.png}
+    }; 
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+\frametitle{Материалы и методы. DRE}
+    \begin{column}[h]{0.45\linewidth}  
+        \begin{itemize}
+        \item \small В качестве DRE (Direct Recording Electronic, Системя Прямой Записи) использовалась авторская система \alert{VoteBox}, написанная на Java. \newline
+        
+        \item \small В системе было 4 экрана с основной информацией и кандидатами.
+        \end{itemize}
+    \end{column}
+    \begin{column}[h]{0.5\linewidth}
+        \begin{figure}
+            \includegraphics[width=\linewidth]{картинка 4.png}
+            \caption{\footnotesize Скриншот предвыборной гонки кандидатов сгенерированное VoteBox}
+        \end{figure}
+    \end{column}
+\end{frame}
+
+\section{Эксперимент}
+
+\begin{frame}
+\frametitle{Эксперимент}
+    \begin{itemize}
+        \item Добровольцам предлагалось пройти процедуру голосования двумя способами: \alert{DRE} и один случайный другой метод.\newline
+        \item Каждый раз происходило ознакомление с информацией о кандидатах и голосование за одного из вымышленных кандидатов.\newline
+        \item На выходе, замерялось затраченное время, избиратель сообщал организаторам за кого отдал голос и на сколько он удовлетворён системами.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Результаты}
+\resizebox{11cm}{!}
+{
+    \begin{tabular}{|c|c|c|c|c|}
+    \rowcolor{Blue}\hline
+    {\color[HTML]{FFFFFF} Категория} & {\color[HTML]{FFFFFF} DRE} & {\color[HTML]{FFFFFF} Бумажная билютень} & {\color[HTML]{FFFFFF} Рычажковый} & {\color[HTML]{FFFFFF} Перфокарта} \\ \hline \rowcolor{LightBlue}
+    \begin{tabular}[c]{@{}c@{}}Среднее время заполнения\\ (сек)\end{tabular} & 442.3 & 255.7 & 241.6  & 239.1 \\ \hline \rowcolor{VeryLightBlue}
+    \begin{tabular}[c]{@{}c@{}}Средняя удовлетворённость\\ SUS (\%)\end{tabular} & 86.1  & 81.3 & 71.5 & 69.0 \\ \hline \rowcolor{LightBlue}
+    \begin{tabular}[c]{@{}c@{}}Ошибки дополнительного\\ голоса (\%)\end{tabular} & .000  & .000 & .000 & .000 \\ \hline \rowcolor{VeryLightBlue}
+    Ошибки неучёта голоса (\%)                                                   & .002  & .002 & .006 & .000 \\ \hline \rowcolor{LightBlue}
+    \begin{tabular}[c]{@{}c@{}}Ошибки неправильного\\ выбора (\%)\end{tabular}   & .120  & .002 & .011 & .002 \\ \hline \rowcolor{VeryLightBlue}
+    Другие ошибки (\%)                                                           & .130  & .004 & .017 & .002 \\ \hline
+    \end{tabular}
+}
+\end{frame}
+
+\section{Обсуждение результатов эксперимента}
+
+\begin{frame}
+\frametitle{Обсуждение результатов эксперимента}
+    \begin{block}{Высокая удовлетворенность}
+        \alert{отсутствие явного преимущества DRE} по объективным показателям эффективности, но избиратели отдают ей предпочтение.
+    \end{block}
+    
+    \begin{block}{Проблема ошибок}
+        \alert{DRE не решает проблему ошибок избирателей}. Более четверти бюллетеней содержат ошибки.
+    \end{block}
+    
+    \begin{block}{Опыт избирателя}
+        Избирателям с меньшим опытом работы с компьютером требуется больше времени для DRE.
+    \end{block}
+\end{frame}
+
+\section{Заключение}
+
+\begin{frame}
+\frametitle{Заключение}
+    \begin{block}{Отсутстве значимого превосходства}
+        Эффективность коммерческих DRE пока неизвестна, но пока в многочисленных исследованиях \alert{мы не увидели никаких доказательств} сильных различий между методами голосования по эффективности.
+    \end{block}
+    
+    \begin{block}{Возможность улучшения}
+        VoteBox лишь прототип электронной системы голосования и представляет не все DRE. Некоторые системы могут быть \alert{лучше} или \alert{хуже}. Однако возможности для улучшения в иследованиях с другими DRE \alert{не обнадеживают} с точки зрения количества ошибок. 
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \Huge{\Huge\calligra Спасибо за внимание!}
+\end{frame}
+
+\end{document}
